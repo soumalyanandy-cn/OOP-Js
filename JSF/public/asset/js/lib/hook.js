@@ -1,9 +1,9 @@
 /* HOOK Javascript File */
 import {_l,_e,_w,_i} from './console';
-//var instance = false;
+var instance = false;
 export function hook(debug = false){
-    //if(instance) return instance;
-    //instance = this;
+    if(instance) return instance;
+    instance = this;
     this.hooks = [];
     this.debug = debug;
 
@@ -29,7 +29,7 @@ export function hook(debug = false){
 
 /* Abstructions */
 function _hooks(instance, type, hook = {}){
-    instance.hooks[type] = [];
+    instance.hooks[type] = []; /* if(typeof instance.hooks[type] !== "undefined") */
     if(instance.debug) {
         _l("Hook type "+type+" => Hook :: ");
         _l(hook);
